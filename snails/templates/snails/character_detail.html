@@ -1,0 +1,35 @@
+{% extends 'snails/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="character_detail-container">
+    <div>
+        <img src="../../static/assets/{{ character.photo }}" alt="">
+    </div>
+    <div>
+        <h1>{{ character.id_character }}</h1>
+    </div>
+    <div>
+        <form method="POST" class="post-form">{% csrf_token %}
+            <b> Changer : </b> 
+            {{ form.as_ul }}
+            <button type="submit" class="btn btn-outline-light validation-btn">valider</button>
+            <button class="back-btn"><a href="{% url 'character_list' %}">Back</a></button>
+        </form>
+    </div>
+</div>
+
+<div class="character_detail-container">
+    <div>
+        <img src="../../static/assets/{{ character.lieu.photo }}" alt="">
+    </div>
+    <div>
+        <h1>{{ character.lieu.id_equip }}</h1>
+        <p>{{ character.lieu.disponibilite }}</p>
+    </div>
+</div>
+ 
+ 
+{% endblock %}
